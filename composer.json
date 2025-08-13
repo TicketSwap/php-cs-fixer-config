@@ -13,6 +13,7 @@
         "symplify/coding-standard": "^12.4"
     },
     "require-dev": {
+        "captainhook/captainhook-phar": "^5.25",
         "ergebnis/composer-normalize": "^2.47"
     },
     "autoload": {
@@ -22,6 +23,7 @@
     },
     "config": {
         "allow-plugins": {
+            "captainhook/captainhook-phar": true,
             "ergebnis/composer-normalize": true
         }
     }
