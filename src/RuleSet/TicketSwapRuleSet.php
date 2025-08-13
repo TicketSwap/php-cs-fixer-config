@@ -25,6 +25,7 @@ use Symplify\CodingStandard\TokenRunner\Transformer\FixerTransformer\TokensNewli
 use Symplify\CodingStandard\TokenRunner\Traverser\ArrayBlockInfoFinder;
 use Symplify\CodingStandard\TokenRunner\Whitespace\IndentResolver;
 use Symplify\CodingStandard\TokenRunner\Wrapper\FixerWrapper\ArrayWrapperFactory;
+use Ticketswap\PhpCsFixerConfig\Fixer\AttributesNewLineFixer;
 use Ticketswap\PhpCsFixerConfig\Fixers;
 use Ticketswap\PhpCsFixerConfig\NameWrapper;
 use Ticketswap\PhpCsFixerConfig\Rules;
@@ -54,6 +55,7 @@ final class TicketSwapRuleSet
         return new RuleSet(
             new Fixers(
                 new LineBreakAfterStatementsFixer(),
+                new NameWrapper(new AttributesNewLineFixer()),
                 new NameWrapper(new ArrayListItemNewlineFixer($arrayItemNewliner, $arrayAnalyzer, $arrayBlockInfoFinder)),
                 new NameWrapper(new ArrayOpenerAndCloserNewlineFixer($arrayBlockInfoFinder, $whitespacesFixerConfig, $arrayAnalyzer)),
                 new NameWrapper(new StandaloneLineInMultilineArrayFixer($arrayWrapperFactory, $tokensNewliner, $blockfinder)),
