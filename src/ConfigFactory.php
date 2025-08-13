@@ -30,7 +30,10 @@ use Symplify\CodingStandard\TokenRunner\Wrapper\FixerWrapper\ArrayWrapperFactory
 
 final readonly class ConfigFactory
 {
-    public static function create() : Config
+    /**
+     * @param array<string, array<string, mixed>|bool> $rules
+     */
+    public static function create(array $rules = []) : Config
     {
         $whitespacesFixerConfig = new WhitespacesFixerConfig('    ', "\n");
         $blockfinder = new BlockFinder();
@@ -203,16 +206,6 @@ final readonly class ConfigFactory
                     'null_adjustment' => 'always_first',
                     'sort_algorithm' => 'alpha',
                 ],
-                'php_unit_fqcn_annotation' => true,
-                'php_unit_method_casing' => [
-                    'case' => 'snake_case',
-                ],
-                'php_unit_test_annotation' => [
-                    'style' => 'annotation',
-                ],
-                'php_unit_test_case_static_method_calls' => [
-                    'call_type' => 'self',
-                ],
                 'phpdoc_align' => [
                     'align' => 'left',
                 ],
@@ -288,6 +281,8 @@ final readonly class ConfigFactory
                     'identical' => false,
                     'less_and_greater' => null,
                 ],
+
+                ...$rules,
             ]);
     }
 }
