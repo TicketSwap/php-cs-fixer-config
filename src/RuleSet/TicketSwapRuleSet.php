@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ticketswap\PhpCsFixerConfig;
+namespace Ticketswap\PhpCsFixerConfig\RuleSet;
 
 use ErickSkrauch\PhpCsFixer\Fixer\Whitespace\LineBreakAfterStatementsFixer;
-use PhpCsFixer\Config;
-use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 use PhpCsFixer\WhitespacesFixerConfig;
 use Symplify\CodingStandard\Fixer\ArrayNotation\ArrayListItemNewlineFixer;
 use Symplify\CodingStandard\Fixer\ArrayNotation\ArrayOpenerAndCloserNewlineFixer;
@@ -27,13 +25,14 @@ use Symplify\CodingStandard\TokenRunner\Transformer\FixerTransformer\TokensNewli
 use Symplify\CodingStandard\TokenRunner\Traverser\ArrayBlockInfoFinder;
 use Symplify\CodingStandard\TokenRunner\Whitespace\IndentResolver;
 use Symplify\CodingStandard\TokenRunner\Wrapper\FixerWrapper\ArrayWrapperFactory;
+use Ticketswap\PhpCsFixerConfig\Fixers;
+use Ticketswap\PhpCsFixerConfig\NameWrapper;
+use Ticketswap\PhpCsFixerConfig\Rules;
+use Ticketswap\PhpCsFixerConfig\RuleSet;
 
-final readonly class ConfigFactory
+final class TicketSwapRuleSet
 {
-    /**
-     * @param array<string, array<string, mixed>|bool> $rules
-     */
-    public static function create(array $rules = []) : Config
+    public static function create() : RuleSet
     {
         $whitespacesFixerConfig = new WhitespacesFixerConfig('    ', "\n");
         $blockfinder = new BlockFinder();
@@ -52,11 +51,8 @@ final readonly class ConfigFactory
         $paramNewliner = new ParamNewliner($blockfinder, $tokensNewliner);
         $methodNameResolver = new MethodNameResolver();
 
-        return new Config()
-            ->setUnsupportedPhpVersionAllowed(true)
-            ->setCacheFile('.php_cs.cache')
-            ->setRiskyAllowed(true)
-            ->registerCustomFixers([
+        return new RuleSet(
+            new Fixers(
                 new NameWrapper(
                     new LineBreakAfterStatementsFixer(),
                     'ErickSkrauch/line_break_after_statements',
@@ -77,9 +73,9 @@ final readonly class ConfigFactory
                     new StandaloneLineConstructorParamFixer($paramNewliner, $methodNameResolver),
                     'Symplify/standalone_line_constructor_param_fixer',
                 ),
-            ])
-            ->setParallelConfig(ParallelConfigFactory::detect())
-            ->setRules([
+            ),
+            'TicketSwap',
+            new Rules([
                 'ErickSkrauch/line_break_after_statements' => true,
                 'Symplify/array_list_item_newline_fixer' => true,
                 'Symplify/array_opener_and_closer_newline_fixer' => true,
@@ -284,8 +280,7 @@ final readonly class ConfigFactory
                     'identical' => false,
                     'less_and_greater' => null,
                 ],
-
-                ...$rules,
-            ]);
+            ]),
+        );
     }
 }

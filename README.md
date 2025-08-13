@@ -14,20 +14,21 @@ composer require --dev ticketswap/php-cs-fixer-config
 
 Create a [`.php-cs-fixer.php`](.php-cs-fixer.php) file in the root of your project:
 
+<!-- source: .php-cs-fixer.php -->
 ```php
 <?php
 
 declare(strict_types=1);
 
 use PhpCsFixer\Finder;
-use Ticketswap\PhpCsFixerConfig\ConfigFactory;
+use Ticketswap\PhpCsFixerConfig\PhpCsFixerConfigFactory;
+use Ticketswap\PhpCsFixerConfig\RuleSet\TicketSwapRuleSet;
 
 $finder = Finder::create()
     ->in(__DIR__ . '/src')
-    ->in(__DIR__ . '/tests')
     ->append([__DIR__ . '/.php-cs-fixer.php']);
 
-return ConfigFactory::create()->setFinder($finder);
+return PhpCsFixerConfigFactory::create(TicketSwapRuleSet::create())->setFinder($finder);
 ```
 
 Adjust the paths in the `Finder` to match your project structure.

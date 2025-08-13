@@ -14,7 +14,8 @@
     },
     "require-dev": {
         "captainhook/captainhook-phar": "^5.25",
-        "ergebnis/composer-normalize": "^2.47"
+        "ergebnis/composer-normalize": "^2.47",
+        "ruudk/readme-examples-sync-hook": "^1.0"
     },
     "autoload": {
         "psr-4": {
