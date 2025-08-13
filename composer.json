@@ -1,0 +1,28 @@
+{
+    "name": "ticketswap/php-cs-fixer-config",
+    "description": "TicketSwap code style rules for PHP CS Fixer",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "dev"
+    ],
+    "require": {
+        "php": "^8.4",
+        "erickskrauch/php-cs-fixer-custom-fixers": "^1.3",
+        "friendsofphp/php-cs-fixer": "^3.85",
+        "symplify/coding-standard": "^12.4"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.47"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ticketswap\\PhpCsFixerConfig\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    }
+}
