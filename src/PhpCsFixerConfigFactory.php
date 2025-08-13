@@ -17,7 +17,7 @@ final class PhpCsFixerConfigFactory
      */
     public static function create(RuleSet $ruleSet) : Config
     {
-        $config = new Config($ruleSet->name);
+        $config = new Config();
 
         $config->setUnsupportedPhpVersionAllowed(true);
         $config->registerCustomFixers($ruleSet->customFixers->value);

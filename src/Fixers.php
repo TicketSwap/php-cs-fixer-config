@@ -9,14 +9,17 @@ use PhpCsFixer\Fixer\FixerInterface;
 final readonly class Fixers
 {
     /**
-     * @var list<FixerInterface>
+     * @var array<class-string<FixerInterface>, FixerInterface>
      */
     public array $value;
 
     public function __construct(
         FixerInterface ...$value,
     ) {
-        $this->value = array_values($value);
+        $this->value = array_combine(
+            array_map(fn($fixer) => $fixer::class, $value),
+            array_values($value),
+        );
     }
 
     public function merge(self $customFixers) : self

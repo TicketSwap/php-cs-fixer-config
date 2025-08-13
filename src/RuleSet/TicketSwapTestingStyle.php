@@ -14,7 +14,6 @@ final class TicketSwapTestingStyle
     {
         return new RuleSet(
             new Fixers(),
-            'TicketSwap Testing Style',
             new Rules([
                 'php_unit_method_casing' => [
                     'case' => 'snake_case',

@@ -6,11 +6,22 @@ namespace Ticketswap\PhpCsFixerConfig;
 
 final readonly class RuleSet
 {
+    public Fixers $customFixers;
+    public Rules $rules;
+
     public function __construct(
-        public Fixers $customFixers,
-        public string $name,
-        public Rules $rules,
-    ) {}
+        Fixers $customFixers,
+        Rules $rules,
+    ) {
+        $this->customFixers = $customFixers;
+
+        $enable = [];
+        foreach ($customFixers->value as $customFixer) {
+            $enable[$customFixer->getName()] = true;
+        }
+
+        $this->rules = new Rules($enable)->merge($rules);
+    }
 
     /**
      * Returns a new rule set with custom fixers.
@@ -19,7 +30,6 @@ final readonly class RuleSet
     {
         return new self(
             $this->customFixers->merge($customFixers),
-            $this->name,
             $this->rules,
         );
     }
@@ -31,8 +41,15 @@ final readonly class RuleSet
     {
         return new self(
             $this->customFixers,
-            $this->name,
             $this->rules->merge($rules),
+        );
+    }
+
+    public function merge(self $other) : self
+    {
+        return new self(
+            $this->customFixers->merge($other->customFixers),
+            $this->rules->merge($other->rules),
         );
     }
 }

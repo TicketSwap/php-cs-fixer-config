@@ -53,35 +53,13 @@ final class TicketSwapRuleSet
 
         return new RuleSet(
             new Fixers(
-                new NameWrapper(
-                    new LineBreakAfterStatementsFixer(),
-                    'ErickSkrauch/line_break_after_statements',
-                ),
-                new NameWrapper(
-                    new ArrayListItemNewlineFixer($arrayItemNewliner, $arrayAnalyzer, $arrayBlockInfoFinder),
-                    'Symplify/array_list_item_newline_fixer',
-                ),
-                new NameWrapper(
-                    new ArrayOpenerAndCloserNewlineFixer($arrayBlockInfoFinder, $whitespacesFixerConfig, $arrayAnalyzer),
-                    'Symplify/array_opener_and_closer_newline_fixer',
-                ),
-                new NameWrapper(
-                    new StandaloneLineInMultilineArrayFixer($arrayWrapperFactory, $tokensNewliner, $blockfinder),
-                    'Symplify/standalone_line_in_multiline_array_fixer',
-                ),
-                new NameWrapper(
-                    new StandaloneLineConstructorParamFixer($paramNewliner, $methodNameResolver),
-                    'Symplify/standalone_line_constructor_param_fixer',
-                ),
+                new LineBreakAfterStatementsFixer(),
+                new NameWrapper(new ArrayListItemNewlineFixer($arrayItemNewliner, $arrayAnalyzer, $arrayBlockInfoFinder)),
+                new NameWrapper(new ArrayOpenerAndCloserNewlineFixer($arrayBlockInfoFinder, $whitespacesFixerConfig, $arrayAnalyzer)),
+                new NameWrapper(new StandaloneLineInMultilineArrayFixer($arrayWrapperFactory, $tokensNewliner, $blockfinder)),
+                new NameWrapper(new StandaloneLineConstructorParamFixer($paramNewliner, $methodNameResolver)),
             ),
-            'TicketSwap',
             new Rules([
-                'ErickSkrauch/line_break_after_statements' => true,
-                'Symplify/array_list_item_newline_fixer' => true,
-                'Symplify/array_opener_and_closer_newline_fixer' => true,
-                'Symplify/standalone_line_in_multiline_array_fixer' => true,
-                'Symplify/standalone_line_constructor_param_fixer' => true,
-
                 // Rule sets
                 '@PER-CS2.0' => true,
 

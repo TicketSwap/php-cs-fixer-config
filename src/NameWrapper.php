@@ -14,7 +14,6 @@ final readonly class NameWrapper implements FixerInterface
 {
     public function __construct(
         private FixerInterface $inner,
-        private string $name,
     ) {}
 
     #[Override]
@@ -44,7 +43,7 @@ final readonly class NameWrapper implements FixerInterface
     #[Override]
     public function getName() : string
     {
-        return $this->name;
+        return 'Custom/' . str_replace('\\', '_', strtolower($this->inner->getName()));
     }
 
     #[Override]
