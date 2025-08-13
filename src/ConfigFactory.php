@@ -244,6 +244,9 @@ final readonly class ConfigFactory
                     'sort_algorithm' => 'none',
                 ],
                 'phpdoc_var_without_name' => true,
+                'php_unit_test_case_static_method_calls' => [
+                    'call_type' => 'self',
+                ],
                 'return_type_declaration' => [
                     'space_before' => 'one',
                 ],
