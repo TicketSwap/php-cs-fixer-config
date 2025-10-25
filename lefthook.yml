@@ -1,0 +1,25 @@
+pre-commit:
+    parallel: false
+    commands:
+        sync-readme-examples:
+            glob:
+                - "*.php"
+                - "*.md"
+            run: vendor/bin/readme-examples-sync
+            stage_fixed: true
+
+        composer-validate:
+            glob:
+                - "composer.json"
+                - "composer.lock"
+            run: composer validate --strict
+
+        composer-normalize:
+            glob: "composer.json"
+            run: composer normalize --diff
+            stage_fixed: true
+
+        php-cs-fixer:
+            glob: "*.php"
+            run: vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php -- {staged_files}
+            stage_fixed: true
