@@ -132,6 +132,7 @@ final class TicketSwapRuleSet
                     'on_multiline' => 'ensure_fully_multiline',
                     'attribute_placement' => 'standalone',
                 ],
+                'multiline_whitespace_before_semicolons' => true,
                 'native_function_casing' => true,
                 'native_type_declaration_casing' => true,
                 'new_expression_parentheses' => true,
