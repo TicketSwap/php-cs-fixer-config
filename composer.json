@@ -8,13 +8,13 @@
     ],
     "require": {
         "php": "^8.4",
-        "erickskrauch/php-cs-fixer-custom-fixers": "^1.3",
-        "friendsofphp/php-cs-fixer": "^3.86",
-        "symplify/coding-standard": "^12.4"
+        "erickskrauch/php-cs-fixer-custom-fixers": "^1.3.1",
+        "friendsofphp/php-cs-fixer": "^3.94",
+        "symplify/coding-standard": "^12.5"
     },
     "require-dev": {
-        "captainhook/captainhook-phar": "^5.25",
-        "ergebnis/composer-normalize": "^2.48",
+        "captainhook/captainhook-phar": "^5.28",
+        "ergebnis/composer-normalize": "^2.50",
         "ruudk/readme-examples-sync-hook": "^2.0"
     },
     "autoload": {
