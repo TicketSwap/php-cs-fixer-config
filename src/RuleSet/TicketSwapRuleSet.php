@@ -193,9 +193,12 @@ final class TicketSwapRuleSet
                 'phpdoc_indent' => true,
                 'phpdoc_inline_tag_normalizer' => true,
                 'phpdoc_line_span' => [
+                    'class' => 'multi',
                     'const' => 'multi',
                     'method' => 'multi',
                     'property' => 'multi',
+                    'other' => 'multi',
+                    'trait_import' => 'multi',
                 ],
                 'phpdoc_no_access' => true,
                 'phpdoc_no_alias_tag' => false,
