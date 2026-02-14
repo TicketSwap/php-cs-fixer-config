@@ -65,7 +65,7 @@ final class TicketSwapRuleSet
             ),
             new Rules([
                 // Rule sets
-                '@PER-CS3.0' => true,
+                '@PER-CS3x0' => true,
 
                 // Rules (keep sorted A-Z)
                 'align_multiline_comment' => true,
