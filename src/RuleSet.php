@@ -6,17 +6,14 @@ namespace Ticketswap\PhpCsFixerConfig;
 
 final readonly class RuleSet
 {
-    public Fixers $customFixers;
     public Rules $rules;
 
     public function __construct(
-        Fixers $customFixers,
+        public Fixers $customFixers,
         Rules $rules,
     ) {
-        $this->customFixers = $customFixers;
-
         $enable = [];
-        foreach ($customFixers->value as $customFixer) {
+        foreach ($this->customFixers->value as $customFixer) {
             $enable[$customFixer->getName()] = true;
         }
 

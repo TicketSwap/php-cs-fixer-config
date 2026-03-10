@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ticketswap\PhpCsFixerConfig\Fixer;
 
+use Override;
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
@@ -51,6 +52,7 @@ final class PhpdocAboveAttributeFixer extends AbstractFixer
      *
      * Must run before NoBlankLinesAfterPhpdocFixer.
      */
+    #[Override]
     public function getPriority() : int
     {
         return 1;
