@@ -37,6 +37,15 @@ final class NoMultilineReturnFixer extends AbstractFixer
         );
     }
 
+    /**
+     * Must run before ArrayIndentationFixer.
+     */
+    #[Override]
+    public function getPriority() : int
+    {
+        return 30;
+    }
+
     #[Override]
     public function isCandidate(Tokens $tokens) : bool
     {
